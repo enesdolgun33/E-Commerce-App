@@ -1,24 +1,15 @@
 {
   "users": [
     {
-      "id": "1aa1",
-      "username": "enesdolgun33@gmail.com",
-      "password": "enes1"
-    },
-    {
-      "id": "f930",
-      "username": "enesd",
-      "password": "1"
-    },
-    {
-      "id": "5a7f",
-      "username": "ee",
-      "password": "ee"
-    },
-    {
       "id": "167534",
       "username": "enese",
       "password": "1",
+      "balance": 1000
+    },
+    {
+      "id": "994232",
+      "username": "enesd",
+      "password": "sad",
       "balance": 1000
     }
   ]
