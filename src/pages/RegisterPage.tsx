@@ -15,11 +15,13 @@ function RegisterPage() {
 
     const navigate = useNavigate();
 
-    const submit = async (values: any, actions: any) => {
+    const submit = async (values: any) => {
         try {
             const payload: UserType = {
+                id: String(Math.floor(Math.random() * 999999)),
                 username: values.username,
-                password: values.password
+                password: values.password,
+                balance: 1000
             }
             const response = await RegisterPageService.register(payload);
             if (response) {
