@@ -96,6 +96,7 @@ function LoginPage() {
                             variant="standard"
                             helperText={errors.username && <span className='helpertext'>{errors.username}</span>}
                         />
+
                         <TextField
                             sx={{ width: '300px', padding: '5px 5px', marginBottom: '25px', backgroundColor: 'inherit', borderRadius: '3px' }}
                             id="password"
