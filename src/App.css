@@ -6,3 +6,10 @@ body{
 input::placeholder{
     font-size: 14px;
 }
+
+
+.css-19opgx6-MuiFormControlLabel-root .MuiFormControlLabel-label {
+font-size: 14px;
+width: 110px;
+}
+

@@ -21,7 +21,7 @@ function ProductCard(props: ProductCardProps) {
             flexDirection: 'column',
             alignItems: 'center',
             justifyContent: 'center',
-            margin: '60px 10px',
+            margin: '50px 10px',
             boxShadow: '1px 5px 5px lightgray',
             cursor: 'pointer'
         }}>
@@ -38,7 +38,7 @@ function ProductCard(props: ProductCardProps) {
                 <h2 className='price'>{price} ₺</h2>
             </div>
             <CardActions>
-                <Button size="small" variant='outlined' color='info'>Detay</Button>
+                <Button sx={{ color: '#5f5139ff', borderColor: '#5f5139ff' }} size="small" variant='outlined'>Detay</Button>
             </CardActions>
         </Card>
     )

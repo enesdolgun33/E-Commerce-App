@@ -8,8 +8,10 @@ import Logo from '../images/logo.png';
 import { useNavigate } from 'react-router-dom';
 import InputAdornment from '@mui/material/InputAdornment';
 import { useDispatch } from 'react-redux';
-import { setCurrentUser } from '../redux/appSlice';
+import { filterProducts, setCurrentUser, setProducts } from '../redux/appSlice';
 import { toast } from 'react-toastify';
+import productService from '../services/ProductService';
+import type { ProductType } from '../types/Types';
 
 function Navbar() {
 
@@ -22,6 +24,19 @@ function Navbar() {
         toast.success("Çıkış yapıldı")
     }
 
+    const handleFilter = async (e: React.ChangeEvent<HTMLInputElement>) => {
+        try {
+            if (e.target.value) {
+                dispatch(filterProducts(e.target.value));
+            } else {
+                const products: ProductType[] = await productService.getAllProducts();
+                dispatch(setProducts(products));
+            }
+        } catch (error) {
+            toast.error("Filtreleme yaparken hata oluştu" + error);
+        }
+
+    }
 
     return (
         <AppBar position="static" sx={{ backgroundColor: '#5f5139ff' }}>
@@ -40,6 +55,7 @@ function Navbar() {
 
                 <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
                     <TextField
+                        onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleFilter(e)}
                         sx={{ width: '200px', marginBottom: '5px', marginRight: '20px' }}
                         id="searchInput"
                         placeholder="Ara"
