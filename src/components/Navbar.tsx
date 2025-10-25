@@ -12,6 +12,9 @@ import { filterProducts, setCurrentUser, setProducts } from '../redux/appSlice';
 import { toast } from 'react-toastify';
 import productService from '../services/ProductService';
 import type { ProductType } from '../types/Types';
+import { SlBasket } from "react-icons/sl";
+import Badge from '@mui/material/Badge';
+
 
 function Navbar() {
 
@@ -49,7 +52,7 @@ function Navbar() {
                 >
                     <img src={Logo} width={60} height={60} style={{ scale: 1.5, color: 'white' }} />
                 </IconButton>
-                <Typography onClick={() => navigate("/")} variant="h6" component="div" sx={{ flexGrow: 1, fontFamily: 'revert-layer', fontSize: '30px', color: '#FFFFFF', fontWeight: 'bold', cursor: 'pointer' }}>
+                <Typography onClick={() => navigate("/")} variant="h6" component="div" sx={{ flexGrow: 1, fontFamily: 'revert-layer', fontSize: '30px', color: '#FFFFFF', fontWeight: 'bold', cursor: 'pointer', userSelect: 'none' }}>
                     Veloria
                 </Typography>
 
@@ -75,7 +78,9 @@ function Navbar() {
                         }}
                         variant="standard"
                     />
-
+                    <Badge badgeContent={1} color="warning" sx={{ margin: '0 13px', cursor: 'pointer' }}>
+                        <SlBasket style={{ fontSize: '22px', marginRight: '5px', cursor: 'pointer' }} />
+                    </Badge>
                     <Button onClick={logout} sx={{ textTransform: 'none' }} color="inherit">Çıkış Yap</Button>
                 </div>
             </Toolbar>

@@ -4,6 +4,7 @@ import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import type { ProductType } from '../types/Types'
+import { useNavigate } from 'react-router-dom';
 
 interface ProductCardProps {
     product: ProductType,
@@ -11,7 +12,10 @@ interface ProductCardProps {
 
 function ProductCard(props: ProductCardProps) {
 
-    const { id, title, price, description, category, image, rating } = props.product;
+    const { id, title, price, description, image } = props.product;
+
+    const navigate = useNavigate();
+
 
     return (
         <Card sx={{
@@ -38,7 +42,7 @@ function ProductCard(props: ProductCardProps) {
                 <h2 className='price'>{price} ₺</h2>
             </div>
             <CardActions>
-                <Button sx={{ color: '#5f5139ff', borderColor: '#5f5139ff' }} size="small" variant='outlined'>Detay</Button>
+                <Button onClick={() => navigate("/product-detail/" + id)} sx={{ color: '#5f5139ff', borderColor: '#5f5139ff' }} size="small" variant='outlined'>Detay</Button>
             </CardActions>
         </Card>
     )

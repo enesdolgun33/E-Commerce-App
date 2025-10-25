@@ -11,6 +11,18 @@
       "username": "enesd",
       "password": "sad",
       "balance": 1000
+    },
+    {
+      "id": "132780",
+      "username": "as",
+      "password": "as",
+      "balance": 1000
+    },
+    {
+      "id": "832648",
+      "username": "enesturan",
+      "password": "enesturan16",
+      "balance": 1000
     }
   ]
 }
