@@ -7,19 +7,23 @@ import Button from '@mui/material/Button';
 import Logo from '../images/logo.png';
 import { useNavigate } from 'react-router-dom';
 import InputAdornment from '@mui/material/InputAdornment';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { filterProducts, setCurrentUser, setProducts } from '../redux/appSlice';
 import { toast } from 'react-toastify';
 import productService from '../services/ProductService';
 import type { ProductType } from '../types/Types';
 import { SlBasket } from "react-icons/sl";
 import Badge from '@mui/material/Badge';
+import type { RootState } from '../redux/store';
 
 
 function Navbar() {
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
+
+    const { basket } = useSelector((state: RootState) => state.basket);
+
     const logout = () => {
         localStorage.removeItem("currentUser");
         dispatch(setCurrentUser(null));
@@ -78,7 +82,7 @@ function Navbar() {
                         }}
                         variant="standard"
                     />
-                    <Badge badgeContent={1} color="warning" sx={{ margin: '0 13px', cursor: 'pointer' }}>
+                    <Badge badgeContent={basket.length} color="warning" sx={{ margin: '0 13px', cursor: 'pointer' }}>
                         <SlBasket style={{ fontSize: '22px', marginRight: '5px', cursor: 'pointer' }} />
                     </Badge>
                     <Button onClick={logout} sx={{ textTransform: 'none' }} color="inherit">Çıkış Yap</Button>

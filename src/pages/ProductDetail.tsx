@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 import productService from "../services/ProductService";
 import type { ProductType } from "../types/Types";
 import Button from "@mui/material/Button";
+import { addProductToBasket } from "../redux/basketSlice";
 
 
 function ProductDetail() {
@@ -32,6 +33,16 @@ function ProductDetail() {
 
     }
 
+    const addBasket = () => {
+        if (product) {
+            const payload = {
+                ...product,
+                count: count
+            }
+            dispatch(addProductToBasket(payload))
+        }
+    }
+
     useEffect(() => {
         getProductById(Number(productId))
     }, [])
@@ -45,17 +56,17 @@ function ProductDetail() {
                     </div>
                     <div style={{ marginLeft: '60px', marginTop: '60px' }}>
                         <div style={{ fontFamily: 'arial', fontSize: '20px', fontWeight: 'bolder' }}>{product.title}</div>
-                        <div style={{ fontFamily: 'arial', fontSize: '15px', marginTop: '25px', height: '100px' }}>{product.description}</div>
+                        <div style={{ fontFamily: 'arial', fontSize: '15px', marginTop: '25px', height: '120px' }}>{product.description}</div>
 
-                        <div style={{ fontFamily: 'arial', fontSize: '25px', fontWeight: 'bold' }}>{product.price} ₺</div>
+                        <div style={{ fontFamily: 'arial', fontSize: '25px', fontWeight: 'bold' }}>{product.price} $</div>
 
                         <div style={{ userSelect: 'none' }}>
-                            <span onClick={() => setCount(count - 1)} style={{ fontSize: '60px', fontWeight: 'normal', cursor: 'pointer', marginRight: '10px' }}> - </span>
+                            <span onClick={() => count > 0 && setCount(count - 1)} style={{ fontSize: '60px', fontWeight: 'normal', cursor: 'pointer', marginRight: '10px' }}> - </span>
                             <span style={{ fontSize: '40px', fontFamily: 'arial', fontWeight: 'bold', cursor: 'pointer' }}>{count}</span>
                             <span onClick={() => setCount(count + 1)} style={{ fontSize: '40px', fontWeight: 'bold', cursor: 'pointer', marginLeft: '10px', userSelect: 'none' }}> + </span>
                         </div>
                         <div>
-                            <Button variant="contained" size="medium" sx={{ textTransform: 'none', marginTop: '20px', marginLeft: '3px', color: 'white', bgcolor: '#5f5139ff' }}>Sepete Ekle</Button>
+                            <Button onClick={addBasket} variant="contained" size="medium" sx={{ textTransform: 'none', marginTop: '20px', marginLeft: '3px', color: 'white', bgcolor: '#5f5139ff' }}>Sepete Ekle</Button>
                         </div>
                     </div>
                 </div>

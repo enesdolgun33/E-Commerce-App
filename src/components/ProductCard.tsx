@@ -39,7 +39,7 @@ function ProductCard(props: ProductCardProps) {
                 </Typography>
             </CardContent>
             <div>
-                <h2 className='price'>{price} ₺</h2>
+                <h2 className='price'>{price} $</h2>
             </div>
             <CardActions>
                 <Button onClick={() => navigate("/product-detail/" + id)} sx={{ color: '#5f5139ff', borderColor: '#5f5139ff' }} size="small" variant='outlined'>Detay</Button>
