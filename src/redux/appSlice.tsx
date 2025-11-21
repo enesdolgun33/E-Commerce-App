@@ -4,12 +4,14 @@ import type { ProductType, UserType } from '../types/Types'
 export interface AppSliceType {
     currentUser: UserType | null,
     loading: boolean,
+    drawer: boolean,
     products: ProductType[],
 }
 
 const initialState: AppSliceType = {
     currentUser: null,
     loading: false,
+    drawer: false,
     products: [],
 }
 
@@ -19,6 +21,9 @@ const appSlice = createSlice({
     reducers: {
         setLoading: (state: AppSliceType, action: PayloadAction<boolean>) => {
             state.loading = action.payload;
+        },
+        setDrawer: (state: AppSliceType, action: PayloadAction<boolean>) => {
+            state.drawer = action.payload;
         },
         setCurrentUser: (state: AppSliceType, action: PayloadAction<UserType | null>) => {
             state.currentUser = action.payload;
@@ -41,5 +46,5 @@ const appSlice = createSlice({
     }
 })
 
-export const { setLoading, setCurrentUser, setProducts, filterProducts } = appSlice.actions
+export const { setLoading, setDrawer, setCurrentUser, setProducts, filterProducts } = appSlice.actions
 export default appSlice.reducer
