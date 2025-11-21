@@ -34,6 +34,11 @@ function ProductDetail() {
     }
 
     const addBasket = () => {
+        if (count === 0) {
+            toast.error("Lütfen ürün adedi seçin.");
+            return;
+        }
+
         if (product) {
             const payload = {
                 ...product,
@@ -43,6 +48,7 @@ function ProductDetail() {
             toast.success("Ürün sepete eklendi.")
         }
     }
+
 
     useEffect(() => {
         getProductById(Number(productId))
